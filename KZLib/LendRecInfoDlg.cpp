@@ -57,7 +57,8 @@ BOOL LendRecInfoDlg::OnInitDialog()
 	int temp = now.GetTime() - expTime.GetTime();
 	if(temp > 0){
 		isExp = TRUE;
-		statusString = _T(" (已过期)");
+		int fine = temp / (24 * 3600);
+		statusString.Format(_T(" (已过期，罚款 %d.%d 元)"), fine/10, fine%10);
 	}else{
 		statusString = _T(" (未过期)");
 		isExp = FALSE;
